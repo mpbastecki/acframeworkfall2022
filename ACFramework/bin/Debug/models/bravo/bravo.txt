@@ -1,0 +1,28 @@
+October 15, 1999
+
+Model Name              : Johnny Bravo
+installation directory  : quake2/baseq2/players/bravo
+Author                  : John “Ronin” Fisher
+Email Address           : JFi7056052@aol.com
+Model description       :  Who doesn’t know who Johnny Bravo is?? .
+Additional Credits to   : ID Software, Cartoon Network
+Thanks to               : Abdul “War Destroyer” Brown for support (again)
+===============================================================* Play Information *
+New Sounds              : Yes
+CTF Skins               : Yes
+VWEP Support            : No
+
+* Construction *
+Poly Count              : 
+Vert Count              : 
+Skin Count              : 3
+Base                    : New model
+Editor used             : 3dsmax, Qtip, Photoshop, NSTV
+Build/Animation time    : About 3 weeks
+* How to use this model *
+Unzip this zip file into your players folder.
+
+* Copyright / Permissions *
+QUAKE(R) and QUAKE II(R) are registered trademarks of id Software, Inc.
+Johnny Bravo is copyrighted and Trademarks of Cartoon Network (I think)
+
