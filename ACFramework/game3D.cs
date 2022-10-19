@@ -381,7 +381,14 @@ namespace ACFramework
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
 			pdwall.Sprite = pspritedoor;
 
-             
+			cCritterDoor pdwall2 = new cCritterDoor(
+				new cVector3(_border.Lox+3, _border.Loy, _border.Midz),
+				new cVector3(_border.Lox+3, _border.Midy - 3, _border.Midz),
+				0.1f, 2, this);
+			cSpriteTextureBox pspritedoor2 =
+				new cSpriteTextureBox(pdwall2.Skeleton, BitmapRes.Sky);
+			pdwall2.Sprite = pspritedoor2;
+
 		} 
 
         public void setRoom1( )
