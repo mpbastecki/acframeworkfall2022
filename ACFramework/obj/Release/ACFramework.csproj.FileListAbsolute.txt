@@ -1,0 +1,3 @@
+C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Release\ACFramework.csprojAssemblyReference.cache
+C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Release\ACFramework.Properties.Resources.resources
+C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Release\ACFramework.csproj.GenerateResource.cache
