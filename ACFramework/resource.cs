@@ -264,6 +264,7 @@ namespace ACFramework
         public static readonly int A = 18;
         public static readonly int S = 19;
         public static readonly int D = 20;
+        public static readonly int F = 21;
         public static Key[] key;
 
         public vk()
@@ -288,7 +289,8 @@ namespace ACFramework
                 Key.W,
                 Key.A,
                 Key.S,
-                Key.D
+                Key.D,
+                Key.F
             };
 
         }

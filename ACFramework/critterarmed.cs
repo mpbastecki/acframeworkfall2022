@@ -889,12 +889,12 @@ namespace ACFramework
 
             if (!shotDone) // if space key or left mouse button is pressed, turn off shooting until not preesed
                 _bshooting = false; 
-            if (shotDone && ( Framework.Keydev[vk.Space] || Framework.Leftclick )) 
+            if (shotDone && ( Framework.Keydev[vk.F] || Framework.Leftclick )) 
             { // if previous shot is done, turn on shooting when space key or left mouse button is pressed
                 _bshooting = true;
                 shotDone = false;
             }
-            if (!shotDone && !timingAge && !Framework.Keydev[vk.Space] && !Framework.Leftclick)
+            if (!shotDone && !timingAge && !Framework.Keydev[vk.F] && !Framework.Leftclick)
             {
                 // space key and mouse button are both lifted, so wait a little
                 timingAge = true;
