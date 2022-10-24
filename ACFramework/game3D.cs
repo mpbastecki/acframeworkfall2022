@@ -45,7 +45,7 @@ namespace ACFramework
             : base( pownergame ) 
 		{ 
 			BulletClass = new cCritter3DPlayerBullet( );
-			Sprite = new cSpriteQuake(ModelsMD2.Yoshi);
+			Sprite = new cSpriteQuake(ModelsMD2.Terminator);
 			Sprite.SpriteAttitude = cMatrix3.scale( 2, 0.8f, 0.4f ); 
 			setRadius( 0.45f ); //Default cCritter.PLAYERRADIUS is 0.4.  
 			setHealth( 10 ); 

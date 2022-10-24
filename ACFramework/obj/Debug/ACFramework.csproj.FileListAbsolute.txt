@@ -131,9 +131,10 @@ C:\Users\jchil\Desktop\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramewor
 C:\Users\jchil\Desktop\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.pdb
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\bin\Debug\ACFramework.exe
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\bin\Debug\ACFramework.pdb
-C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csprojAssemblyReference.cache
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.Properties.Resources.resources
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csproj.GenerateResource.cache
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csproj.CopyComplete
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.exe
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.pdb
+C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csproj.AssemblyReference.cache
+C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csproj.CoreCompileInputs.cache
