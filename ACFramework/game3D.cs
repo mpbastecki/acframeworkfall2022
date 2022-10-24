@@ -69,13 +69,13 @@ namespace ACFramework
 
         public override void update(ACView pactiveview, float dt)
         {
-            base.update(pactiveview, dt); //Always call this first
+            /*base.update(pactiveview, dt); //Always call this first
             if (!warningGiven && distanceTo(new cVector3(Game.Border.Lox, Game.Border.Loy,
                 Game.Border.Midz)) < 3.0f)
             {
                 warningGiven = true;
                 MessageBox.Show("DON'T GO THROUGH THAT DOOR!!!  DON'T EVEN THINK ABOUT IT!!!");
-            }
+            }*/
  
         } 
 
