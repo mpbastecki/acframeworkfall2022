@@ -359,9 +359,14 @@ namespace ACFramework
 			short ends, we'll only tile them once, so we reset these two. */
           pwall.Sprite = pspritebox; 
 		
+
+
+
+
+
 		
 			//Then draw a ramp to the top of the wall.  Scoot it over against the right wall.
-			float planckwidth = 0.75f * height; 
+			/*float planckwidth = 0.75f * height; 
 			pwall = new cCritterWall( 
 				new cVector3( _border.Hix -planckwidth / 2.0f, _border.Loy, _border.Hiz - 2.0f), 
 				new cVector3( _border.Hix - planckwidth / 2.0f, _border.Loy + height, zpos ), 
@@ -388,7 +393,7 @@ namespace ACFramework
 			cSpriteTextureBox pspritedoor2 =
 				new cSpriteTextureBox(pdwall2.Skeleton, BitmapRes.Sky);
 			pdwall2.Sprite = pspritedoor2;
-
+			*/
 		} 
 
         public void setRoom1( )
