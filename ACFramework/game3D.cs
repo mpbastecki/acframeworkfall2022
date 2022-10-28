@@ -406,7 +406,7 @@ namespace ACFramework
 	        SkyBox.setAllSidesTexture( BitmapRes.Wall3, 2 );
 	        SkyBox.setSideTexture( cRealBox3.LOY, BitmapRes.Wood2 );
 	        SkyBox.setSideTexture( cRealBox3.HIY, BitmapRes.Graphics2);
-	        _seedcount = 0; ; ;
+	        _seedcount = 2; ; ;
 	        Player.setMoveBox( new cRealBox3( 50.0f, 15.0f, -20.0f ) );
 
 			//moves the wall right to left-----------------------------------------------------------------------
