@@ -590,7 +590,7 @@ namespace ACFramework
 			if (wentThrough && (Age - startNewRoom) > 2.0f)
             {
 				roomCount++;
-                MessageBox.Show("You went through the door and are in Room " + (1 + roomCount));
+                //MessageBox.Show("You went through the door and are in Room " + (1 + roomCount));
                 wentThrough = false;
             }
 
