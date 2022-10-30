@@ -306,9 +306,8 @@ namespace ACFramework
         private bool wentThrough = false;
         private float startNewRoom;
 		public static int roomCount = 0;
-		public static float x = -27.6f;
-		public static float y = 20.6f;
-		public static float z = 10f;
+		public static bool roomLock = false;
+		public static bool sentMessage = false;
 
 		
 		public cGame3D() 
@@ -336,7 +335,7 @@ namespace ACFramework
 			SkyBox.setSideTexture( cRealBox3.HIY, BitmapRes.Sky ); //ceiling 
 		
 			WrapFlag = cCritter.BOUNCE; 
-			_seedcount = 7; 
+			_seedcount = 0; 
 			setPlayer( new cCritter3DPlayer( this )); 
 			_ptreasure = new cCritterTreasure( this );
             shape = new cCritterShape(this);
@@ -410,7 +409,7 @@ namespace ACFramework
 	        SkyBox.setAllSidesTexture( BitmapRes.Wall3, 2 );
 	        SkyBox.setSideTexture( cRealBox3.LOY, BitmapRes.Wood2 );
 	        SkyBox.setSideTexture( cRealBox3.HIY, BitmapRes.Graphics2);
-	        _seedcount = 0; ; ;
+	        _seedcount = 2;
 	        Player.setMoveBox( new cRealBox3( 50.0f, 15.0f, -20.0f ) );
 
 			//moves the wall right to left-----------------------------------------------------------------------
@@ -444,8 +443,8 @@ namespace ACFramework
          
       //----------------------------------------------------------------------------------------------
             cCritterDoor pdwall = new cCritterDoor(
-				 new cVector3(_border.Lox + 0.5f, _border.Loy, _border.Midz+6),
-				 new cVector3(_border.Lox + 0.5f , _border.Midy, _border.Midz+6),
+				 new cVector3(_border.Lox - 0.1f, _border.Loy, _border.Midz+6),
+				 new cVector3(_border.Lox - 0.1f , _border.Midy, _border.Midz+6),
 				 0.5f, 2, this);
 			cSpriteTextureBox pspritedoor =
 				new cSpriteTextureBox(pdwall.Skeleton, BitmapRes.Door);
@@ -568,25 +567,9 @@ namespace ACFramework
 			// (3) Maybe check some other conditions.
 
 
-			/*cCritterWall pwall = new cCritterWall(
-			   new cVector3(_border.Midx + 2.0f, 10f, 10f),
-			   new cVector3(_border.Hix, 10f, 10f),
-			   10f, //thickness param for wall's dy which goes perpendicular to the 
-					   //baseline established by the frist two args, up the screen 
-			   10f, //height argument for this wall's dz  goes into the screen 
-			   this);
-			cSpriteTextureBox pspritebox =
-				new cSpriteTextureBox(pwall.Skeleton, BitmapRes.Wall3, 16); //Sets all sides 
-			 /*We'll tile our sprites three times along the long sides, and on the
-		short ends, we'll only tile them once, so we reset these two. */
-			/*pwall.Sprite = pspritebox;
-			x += 0.01f;
-			
-			pwall.moveTo(new cVector3(x, y, z));
-			*/
 			//pwall.rotate(new cSpin(((float)Math.PI) / 4.0f, new cVector3(1.0f, 0.0f, 0.0f)));
 
-
+			
 			if (wentThrough && (Age - startNewRoom) > 2.0f)
             {
 				roomCount++;
@@ -596,15 +579,39 @@ namespace ACFramework
 
             if (doorcollision == true)
             {
-				if (roomCount == 0){
+				if (roomCount == 0) {
 					setRoom1();
+					roomLock = true;
 				}
-                else
-                {
+				else if (roomCount == 1 && roomLock == false)
+				{
 					setRoom2();
-                }
-                
-                doorcollision = false;
+				}
+				else if (roomLock == true && sentMessage == false)
+                {
+					if (Player.Score >= 3)
+					{
+						roomLock = false;
+					}
+					else
+					{
+						MessageBox.Show("This door is locked, finish the mission. \n Get a score of 3 or more");
+						sentMessage = true;
+					}
+				}
+				else if (roomLock == true && sentMessage == true)
+				{
+					if(Player.Score >= 3)
+                    {
+						roomLock = false;
+                    }
+				}
+				else
+                {
+					MessageBox.Show("If you see this message, something went horribly wrong!");
+				}
+
+				doorcollision = false;
             }
 		} 
 		

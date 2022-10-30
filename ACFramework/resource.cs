@@ -357,7 +357,7 @@ namespace ACFramework
             new ModelsMD2Info( "Starwars_bdroid", "security.pcx", 0.2f, true ),
             new ModelsMD2Info( "Speedy", "speedy.pcx", 0.2f, true ),
             new ModelsMD2Info( "Ostrich", "ctf_r.pcx", 0.2f, true ),
-            new ModelsMD2Info( "Yoshi", "blue yoshi.pcx", 0.2f, false ),
+            new ModelsMD2Info( "Yoshi", "cyan yoshi.pcx", 0.2f, false ),
         };            
 
         private static int[] randomCritters;
