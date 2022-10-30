@@ -76,6 +76,7 @@ namespace ACFramework
                 warningGiven = true;
                 MessageBox.Show("DON'T GO THROUGH THAT DOOR!!!  DON'T EVEN THINK ABOUT IT!!!");
             }*/
+			
  
         } 
 
@@ -305,6 +306,10 @@ namespace ACFramework
         private bool wentThrough = false;
         private float startNewRoom;
 		public static int roomCount = 0;
+		public static float x = -27.6f;
+		public static float y = 20.6f;
+		public static float z = 10f;
+
 		
 		public cGame3D() 
 		{
@@ -387,11 +392,10 @@ namespace ACFramework
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
 			pdwall.Sprite = pspritedoor;
 
-			
+			pwall.rotate(new cSpin(((float)Math.PI) / 4.0f, new cVector3(1.0f, 0.0f, 0.0f))); 
 
 
 
-			
 		} 
 
         public void setRoom1( )
@@ -545,10 +549,30 @@ namespace ACFramework
 			int modelcount = Biota.count<cCritter3Dcharacter>(); 
 			int modelstoadd = _seedcount - modelcount; 
 			for ( int i = 0; i < modelstoadd; i++) 
-				new cCritter3Dcharacter( this ); 
-		// (3) Maybe check some other conditions.
+				new cCritter3Dcharacter( this );
+			// (3) Maybe check some other conditions.
 
-            if (wentThrough && (Age - startNewRoom) > 2.0f)
+
+			/*cCritterWall pwall = new cCritterWall(
+			   new cVector3(_border.Midx + 2.0f, 10f, 10f),
+			   new cVector3(_border.Hix, 10f, 10f),
+			   10f, //thickness param for wall's dy which goes perpendicular to the 
+					   //baseline established by the frist two args, up the screen 
+			   10f, //height argument for this wall's dz  goes into the screen 
+			   this);
+			cSpriteTextureBox pspritebox =
+				new cSpriteTextureBox(pwall.Skeleton, BitmapRes.Wall3, 16); //Sets all sides 
+			 /*We'll tile our sprites three times along the long sides, and on the
+		short ends, we'll only tile them once, so we reset these two. */
+			/*pwall.Sprite = pspritebox;
+			x += 0.01f;
+			
+			pwall.moveTo(new cVector3(x, y, z));
+			*/
+			//pwall.rotate(new cSpin(((float)Math.PI) / 4.0f, new cVector3(1.0f, 0.0f, 0.0f)));
+
+
+			if (wentThrough && (Age - startNewRoom) > 2.0f)
             {
 				roomCount++;
                 MessageBox.Show("You went through the door and are in Room " + (1 + roomCount));
