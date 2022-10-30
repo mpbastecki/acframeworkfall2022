@@ -403,24 +403,26 @@ namespace ACFramework
             Biota.purgeCritters<cCritterWall>();
             Biota.purgeCritters<cCritter3Dcharacter>();
             Biota.purgeCritters<cCritterShape>();
-            setBorder(10.0f, 15.0f, 10.0f); 
+            setBorder(50.0f, 15.0f, -20.0f); 
 	        cRealBox3 skeleton = new cRealBox3();
             skeleton.copy( _border );
 	        setSkyBox(skeleton);
-	        SkyBox.setAllSidesTexture( BitmapRes.Graphics1, 2 );
-	        SkyBox.setSideTexture( cRealBox3.LOY, BitmapRes.Concrete );
-	        SkyBox.setSideSolidColor( cRealBox3.HIY, Color.Blue );
+	        SkyBox.setAllSidesTexture( BitmapRes.Wall3, 2 );
+	        SkyBox.setSideTexture( cRealBox3.LOY, BitmapRes.Wood2 );
+	        SkyBox.setSideTexture( cRealBox3.HIY, BitmapRes.Graphics2);
 	        _seedcount = 0; ; ;
-	        Player.setMoveBox( new cRealBox3( 10.0f, 15.0f, 10.0f ) );
+	        Player.setMoveBox( new cRealBox3( 50.0f, 15.0f, -20.0f ) );
+
+			//moves the wall right to left-----------------------------------------------------------------------
             float zpos = 0.0f; /* Point on the z axis where we set down the wall.  0 would be center,
 			halfway down the hall, but we can offset it if we like. */
             float height = 0.1f * _border.YSize;
             float ycenter = -_border.YRadius + height / 2.0f;
             float wallthickness = cGame3D.WALLTHICKNESS;
-            
+       //------------------------------------------------------------------------------------ 
 			cCritterWall pwall = new cCritterWall(
-                new cVector3(_border.Midx + 2.0f, ycenter, zpos),
-                new cVector3(_border.Hix, ycenter, zpos),
+                new cVector3(_border.Midx + 2.0f, ycenter, zpos + 4.0f),
+                new cVector3(_border.Hix, ycenter, zpos + 4.0f),
                 height, //thickness param for wall's dy which goes perpendicular to the 
                 //baseline established by the frist two args, up the screen 
                 wallthickness, //height argument for this wall's dz  goes into the screen 
@@ -428,10 +430,23 @@ namespace ACFramework
             cSpriteTextureBox pspritebox =
                 new cSpriteTextureBox(pwall.Skeleton, BitmapRes.Concrete); //Sets all sides 
 
-			cCritterDoor pdwall = new cCritterDoor(
-				 new cVector3(_border.Lox + 3, _border.Loy, _border.Midz),
-				 new cVector3(_border.Lox + 3, _border.Midy, _border.Midz),
-				 0.1f, 2, this);
+     //----------------------------------------------------------------------------------------------
+            cCritterWall pwall_1 = new cCritterWall(
+                            new cVector3(_border.Midx + 2.0f, ycenter, zpos - 4.0f),
+                            new cVector3(_border.Hix, ycenter, zpos - 4.0f),
+                            height, //thickness param for wall's dy which goes perpendicular to the 
+                                    //baseline established by the frist two args, up the screen 
+                            wallthickness, //height argument for this wall's dz  goes into the screen 
+                            this);
+            cSpriteTextureBox pspritebox1 =
+                new cSpriteTextureBox(pwall_1.Skeleton, BitmapRes.Concrete); //Sets all sides 
+
+         
+      //----------------------------------------------------------------------------------------------
+            cCritterDoor pdwall = new cCritterDoor(
+				 new cVector3(_border.Lox + 0.5f, _border.Loy, _border.Midz+6),
+				 new cVector3(_border.Lox + 0.5f , _border.Midy, _border.Midz+6),
+				 0.5f, 2, this);
 			cSpriteTextureBox pspritedoor =
 				new cSpriteTextureBox(pdwall.Skeleton, BitmapRes.Door);
 			pdwall.Sprite = pspritedoor;

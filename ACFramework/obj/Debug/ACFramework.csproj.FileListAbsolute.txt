@@ -138,3 +138,12 @@ C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\D
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.pdb
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csproj.AssemblyReference.cache
 C:\Users\theme\Desktop\Actual Project\ACFramework Version 2.06\ACFramework\obj\Debug\ACFramework.csproj.CoreCompileInputs.cache
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\bin\Debug\ACFramework.exe
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\bin\Debug\ACFramework.pdb
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.csproj.AssemblyReference.cache
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.Properties.Resources.resources
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.csproj.GenerateResource.cache
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.csproj.CoreCompileInputs.cache
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.csproj.CopyComplete
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.exe
+C:\Clarion\Fall 2022\Software_Eng\BigProject\ACFramework\obj\Debug\ACFramework.pdb
