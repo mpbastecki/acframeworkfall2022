@@ -316,7 +316,7 @@ namespace ACFramework
 			_menuflags &= ~ cGame.MENU_BOUNCEWRAP; 
 			_menuflags |= cGame.MENU_HOPPER; //Turn on hopper listener option.
 			_spritetype = cGame.ST_MESHSKIN; 
-			setBorder( 64.0f, 16.0f, 64.0f ); // size of the world
+			setBorder( 64.0f, 32.0f, 64.0f ); // size of the world
 		
 			cRealBox3 skeleton = new cRealBox3();
             skeleton.copy(_border);
@@ -352,7 +352,7 @@ namespace ACFramework
 			float ycenter = -_border.YRadius + height / 2.0f; 
 			float wallthickness = cGame3D.WALLTHICKNESS;
             cCritterWall pwall = new cCritterWall( 
-				new cVector3( _border.Midx + 2.0f, ycenter, zpos ), 
+				new cVector3( _border.Midx - 2.0f, ycenter, zpos ), 
 				new cVector3( _border.Hix, ycenter, zpos ), 
 				height, //thickness param for wall's dy which goes perpendicular to the 
 					//baseline established by the frist two args, up the screen 
@@ -385,7 +385,7 @@ namespace ACFramework
 		
 			cCritterDoor pdwall = new cCritterDoor( 
 				new cVector3( _border.Lox, _border.Loy, _border.Midz ), 
-				new cVector3( _border.Lox, _border.Midy - 3, _border.Midz ), 
+				new cVector3( _border.Lox, _border.Midy - 12, _border.Midz ), 
 				0.1f, 2, this ); 
 			cSpriteTextureBox pspritedoor = 
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
