@@ -475,7 +475,7 @@ namespace ACFramework
             cSpriteTextureBox stb = new cSpriteTextureBox(pwall.Skeleton, 
                 BitmapRes.Wood2, 2 );
             pwall.Sprite = stb;
-		
+			*/
 			cCritterDoor pdwall = new cCritterDoor( 
 				new cVector3( _border.Lox, _border.Loy, _border.Midz ), 
 				new cVector3( _border.Lox, _border.Midy - 12, _border.Midz ), 
@@ -483,7 +483,7 @@ namespace ACFramework
 			cSpriteTextureBox pspritedoor = 
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
 			pdwall.Sprite = pspritedoor;
-
+			/*
 			cCritterDoor pdwall2 = new cCritterDoor(
 				new cVector3(_border.Lox+3, _border.Loy, _border.Midz),
 				new cVector3(_border.Lox+3, _border.Midy - 3, _border.Midz),
