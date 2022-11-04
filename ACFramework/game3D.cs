@@ -33,10 +33,43 @@ namespace ACFramework
                 return "cCritterDoor";
             }
         }
-	} 
-	
+	}
+
+	//created wall to move
+	class cCritterMovingWall : cCritterWall
+	{
+
+		public cCritterMovingWall(cVector3 enda, cVector3 endb, float thickness, float height, cGame pownergame)
+			: base(enda, endb, thickness, height, pownergame)
+		{
+		}
+
+		public override bool collide(cCritter pcritter)
+		{
+			bool collided = base.collide(pcritter);
+			if (collided && pcritter is cCritter3DPlayer)
+			{
+				return true;
+			}
+			return false;
+		}
+        public override void update(ACView pactiveview, float dt)
+        {
+            base.update(pactiveview, dt);
+			
+			rotate(new cSpin(((float)Math.PI) / 480.0f, new cVector3(0.0f, 1.0f, 0.0f)));
+		}
+        public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritterMovingWall";
+			}
+		}
+	}
+
 	//==============Critters for the cGame3D: Player, Ball, Treasure ================ 
-	
+
 	class cCritter3DPlayer : cCritterArmedPlayer 
 	{ 
         private bool warningGiven = false;
@@ -142,7 +175,8 @@ namespace ACFramework
 		public override void initialize( cCritterArmed pshooter ) 
 		{ 
 			base.initialize( pshooter );
-            Sprite.FillColor = Color.Crimson;
+			Sprite = new cSpriteQuake(ModelsMD2.Mario);
+			//Sprite.FillColor = Color.Crimson;
             // can use setSprite here too
             setRadius(0.1f);
 		} 
@@ -293,11 +327,94 @@ namespace ACFramework
                 return "cCritterTreasure";
             }
         }
-	} 
+	}
 
-    //======================cGame3D========================== 
+	class cCritterShooter : cCritterArmed
+	{   // Try jumping through this hoop
 
-    class cGame3D : cGame 
+		public cCritterShooter(cGame pownergame) :
+		base(pownergame)
+		{
+			/* The sprites look nice from afar, but bitmap speed is really slow
+		when you get close to them, so don't use this. */
+			_collidepriority = cCollider.CP_PLAYER + 1;
+			Sprite = new cSpriteQuake(ModelsMD2.Carmack);
+			Sprite.ModelState = State.Idle;
+			FixedFlag = false;
+			Armed = true;
+			_bshooting = false;
+			Attitude = new cMatrix3(new cVector3(0.0f, 0.0f, 1.0f),
+					new cVector3(1.0f, 0.0f, 0.0f),
+					new cVector3(0.0f, 1.0f, 0.0f), Position);
+
+		}
+
+
+		public override bool collide(cCritter pcritter)
+		{
+			if (contains(pcritter)) //disk of pcritter is wholly inside my disk 
+			{
+				Framework.snd.play(Sound.Clap);
+				pcritter.addScore(-100);
+				pcritter.addHealth(-1);
+				return true;
+			}
+			else
+				return false;
+		}
+
+		//Checks if pcritter inside.
+
+		public override int collidesWith(cCritter pothercritter)
+		{
+			if (pothercritter is cCritter3DPlayer)
+				return cCollider.COLLIDEASCALLER;
+			else
+				return cCollider.DONTCOLLIDE;
+		}
+
+		/* Only collide
+			with cCritter3DPlayer. */
+
+		public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritterShooter";
+			}
+		}
+	}
+
+	class cCritterTarget : cCritter3Dcharacter
+	{   // Try jumping through this hoop
+
+		public cCritterTarget(cGame pownergame) :
+		base(pownergame)
+		{
+			/* The sprites look nice from afar, but bitmap speed is really slow
+		when you get close to them, so don't use this. */
+			_collidepriority = cCollider.CP_PLAYER + 1;
+			Sprite = new cSpriteQuake(ModelsMD2.Chicken);
+			setRadius(cGame3D.CRITTERMAXRADIUS);
+			FixedFlag = false;
+			MaxSpeed = 0.0f;
+		}
+
+
+		
+
+		
+		public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritterTarget";
+			}
+		}
+	}
+	//======================cGame3D========================== 
+
+	class cGame3D : cGame 
 	{ 
 		public static readonly float TREASURERADIUS = 1.2f; 
 		public static readonly float WALLTHICKNESS = 0.5f; 
@@ -357,7 +474,7 @@ namespace ACFramework
 			float wallthickness = cGame3D.WALLTHICKNESS;
 
 
-            cCritterWall pwall = new cCritterWall( 
+            cCritterMovingWall pwall = new cCritterMovingWall( 
 				new cVector3( _border.Midx + 2.0f, ycenter, zpos ), 
 				new cVector3( _border.Hix, ycenter, zpos ), 
 				height, //thickness param for wall's dy which goes perpendicular to the 
@@ -487,8 +604,8 @@ namespace ACFramework
 			cSpriteTextureBox pspritedoor = 
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
 			pdwall.Sprite = pspritedoor;
-			/*
-			cCritterDoor pdwall2 = new cCritterDoor(
+
+			/*cCritterDoor pdwall2 = new cCritterDoor(
 				new cVector3(_border.Lox+3, _border.Loy, _border.Midz),
 				new cVector3(_border.Lox+3, _border.Midy - 3, _border.Midz),
 				0.1f, 2, this);
@@ -496,6 +613,10 @@ namespace ACFramework
 				new cSpriteTextureBox(pdwall2.Skeleton, BitmapRes.Sky);
 			pdwall2.Sprite = pspritedoor2;
 			*/
+			cCritterShooter Carmack1 = new cCritterShooter(this);
+			cCritterTarget chicken1 = new cCritterTarget(this);
+			chicken1.moveTo(new cVector3(0.0f, -5.0f, 0.0f));
+			Carmack1.moveTo(new cVector3(0.0f, -5.0f, 5.0f));
 		} 
 
         public void setRoom1( )
@@ -603,7 +724,7 @@ namespace ACFramework
 		public override void seedCritters() 
 		{
 			Biota.purgeCritters<cCritterBullet>(); 
-			Biota.purgeCritters<cCritter3Dcharacter>();
+			//Biota.purgeCritters<cCritter3Dcharacter>();
             for (int i = 0; i < _seedcount; i++) 
 				new cCritter3Dcharacter( this );
             Player.moveTo(new cVector3(0.0f, Border.Loy, Border.Hiz - 3.0f)); 

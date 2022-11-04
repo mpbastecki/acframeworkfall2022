@@ -358,6 +358,9 @@ namespace ACFramework
         public static readonly int Speedy = 5;
         public static readonly int Ostrich = 6;
         public static readonly int Yoshi = 7;
+        public static readonly int Mario = 8;
+        public static readonly int Carmack = 9;
+        public static readonly int Chicken = 10;
 
         // at least one must be set true
         private static readonly ModelsMD2Info[] minfo = {
@@ -369,6 +372,9 @@ namespace ACFramework
             new ModelsMD2Info( "Speedy", "speedy.pcx", 0.2f, true ),
             new ModelsMD2Info( "Ostrich", "ctf_r.pcx", 0.2f, true ),
             new ModelsMD2Info( "Yoshi", "cyan yoshi.pcx", 0.2f, false ),
+            new ModelsMD2Info( "Mario", "Mario.pcx", 0.2f, false),
+            new ModelsMD2Info( "Carmack", "john.pcx", 0.2f, true),
+            new ModelsMD2Info( "Chicken", "Stoopid.pcx", 0.2f, true)
         };            
 
         private static int[] randomCritters;
