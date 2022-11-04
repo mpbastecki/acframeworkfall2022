@@ -17,6 +17,7 @@ namespace ACFramework
         public static readonly float TURNSPEEDUPWAIT = 0.1f; //Time in secs of turning before you turn faster.
         public static readonly float RIDESTEP = 0.05f;
         public static readonly int MOVEVIEW = 1;
+        
         /* MOVEVIEW must be 1 or -1. 
         If MOVEVIEW is 1, then the cCritterViewerFly and
     cCritterViewerOrtho	will move the cCritterViewer in such a way that what you see 
@@ -442,8 +443,9 @@ namespace ACFramework
             bool down = Framework.Keydev[vk.S];
             bool pageup = Framework.Keydev[vk.Space];
             bool pagedown = Framework.Keydev[vk.PageDown];
-           
+            
 
+          
             if (!_hopping && up)
             {
                 pcritter.Sprite.ModelState = State.Run;

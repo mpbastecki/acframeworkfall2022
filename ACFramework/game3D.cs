@@ -111,9 +111,12 @@ namespace ACFramework
 
         public override cCritterBullet shoot()
         {
-            Framework.snd.play(Sound.LaserFire);
+            Framework.snd.play(Sound.Goopy);
             return base.shoot();
+            
         }
+
+
 
         public override string RuntimeClass
         {
@@ -308,6 +311,7 @@ namespace ACFramework
 		public static int roomCount = 0;
 		public static bool roomLock = false;
 		public static bool sentMessage = false;
+		public static bool HarpSound = false;
 
 		
 		public cGame3D() 
@@ -499,7 +503,7 @@ namespace ACFramework
             Biota.purgeCritters<cCritterWall>();
             Biota.purgeCritters<cCritter3Dcharacter>();
             Biota.purgeCritters<cCritterShape>();
-            setBorder(150.0f, 15.0f, -20.0f); 
+            setBorder(50.0f, 15.0f, -20.0f); 
 	        cRealBox3 skeleton = new cRealBox3();
             skeleton.copy( _border );
 	        setSkyBox(skeleton);
@@ -508,8 +512,9 @@ namespace ACFramework
 	        SkyBox.setSideTexture( cRealBox3.HIY, BitmapRes.Graphics2);
 	        _seedcount = 2;
 	        Player.setMoveBox( new cRealBox3( 50.0f, 15.0f, -20.0f ) );
+			Player.rotate(new cSpin(90.0f, new cVector3(1.1f)));
 
-			//moves the wall right to left-----------------------------------------------------------------------
+            //moves the wall right to left-----------------------------------------------------------------------
             float zpos = 0.0f; /* Point on the z axis where we set down the wall.  0 would be center,
 			halfway down the hall, but we can offset it if we like. */
             float height = 0.1f * _border.YSize;
@@ -673,9 +678,16 @@ namespace ACFramework
 			
 			if (wentThrough && (Age - startNewRoom) > 2.0f)
             {
-				roomCount++;
+                Framework.snd.play(Sound.Doorcreak);
+                roomCount++;
                 //MessageBox.Show("You went through the door and are in Room " + (1 + roomCount));
                 wentThrough = false;
+            }
+
+			if(Score >= 3 && HarpSound == false)
+			{
+                Framework.snd.play(Sound.Harp);
+				HarpSound = true;
             }
 
             if (doorcollision == true)
@@ -690,22 +702,26 @@ namespace ACFramework
 				}
 				else if (roomLock == true && sentMessage == false)
                 {
+
 					if (Player.Score >= 3)
 					{
-						roomLock = false;
+                        roomLock = false;
 					}
 					else
 					{
 						MessageBox.Show("This door is locked, finish the mission. \n Get a score of 3 or more");
 						sentMessage = true;
-					}
+                        Framework.snd.play(Sound.Knockdoor);
+                    }
 				}
 				else if (roomLock == true && sentMessage == true)
 				{
 					if(Player.Score >= 3)
                     {
-						roomLock = false;
+                        
+                        roomLock = false;
                     }
+					
 				}
 				else
                 {
