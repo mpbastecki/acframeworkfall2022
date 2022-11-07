@@ -41,6 +41,7 @@ namespace ACFramework
 			set to CritterWall.BULLETPRISMDZ above. */
         }
 
+
         /// <summary>
         /// Use to create and return another bullet object.  This is a virtual function, so if you are possibly
         /// using a derived object with a base class name, it will return a bullet of the type of the derived
@@ -208,8 +209,8 @@ namespace ACFramework
 		}
 
 
-    } 
-	
+    }
+
 	class cCritterBulletRubber : cCritterBullet 
 	{ 
 		public static readonly new bool DIEATEDGES = false; //If TRUE they disappear at edges, no bounce or wrap.

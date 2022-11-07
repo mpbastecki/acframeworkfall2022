@@ -105,6 +105,7 @@ namespace ACFramework
         public static readonly int Knockdoor = 7;
         public static readonly int Doorcreak = 8;
         public static readonly int Dullthump = 9;
+        public static readonly int Death2 = 10;
 
         private static readonly string[] sound = new string[] {
                 "pop.wav",
@@ -116,7 +117,8 @@ namespace ACFramework
                 "harp.wav",
                 "knockdoor.wav",
                 "doorcreak.wav",
-                "dullthump.wav"
+                "dullthump.wav",
+                "death2.wav"
             };
 
         public Sound()
@@ -289,6 +291,7 @@ namespace ACFramework
         public static readonly int S = 19;
         public static readonly int D = 20;
         public static readonly int F = 21;
+        public static readonly int R = 22;
         public static Key[] key;
 
         public vk()
@@ -314,7 +317,8 @@ namespace ACFramework
                 Key.A,
                 Key.S,
                 Key.D,
-                Key.F
+                Key.F,
+                Key.R
             };
 
         }

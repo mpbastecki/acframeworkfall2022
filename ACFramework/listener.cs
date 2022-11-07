@@ -443,8 +443,12 @@ namespace ACFramework
             bool down = Framework.Keydev[vk.S];
             bool pageup = Framework.Keydev[vk.Space];
             bool pagedown = Framework.Keydev[vk.PageDown];
-            
+            bool reloadSound = Framework.Keydev[vk.R];
 
+            if (reloadSound)
+            {
+                Framework.snd.play(Sound.Death2);
+            }
           
             if (!_hopping && up)
             {

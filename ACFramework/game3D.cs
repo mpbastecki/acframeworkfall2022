@@ -77,7 +77,7 @@ namespace ACFramework
         public cCritter3DPlayer( cGame pownergame ) 
             : base( pownergame ) 
 		{ 
-			BulletClass = new cCritter3DPlayerBullet( );
+			BulletClass = new cCritter3DPlayerBulletMario( );
 			Sprite = new cSpriteQuake(ModelsMD2.Yoshi);
 			Sprite.SpriteAttitude = cMatrix3.scale( 2, 0.8f, 0.4f ); 
 			setRadius( 0.45f ); //Default cCritter.PLAYERRADIUS is 0.4.  
@@ -88,8 +88,9 @@ namespace ACFramework
 			MaxSpeed =  cGame3D.MAXPLAYERSPEED; 
 			AbsorberFlag = true; //Keeps player from being buffeted about.
 			ListenerAcceleration = 160.0f; //So Hopper can overcome gravity.  Only affects hop.
-		
-            // YHopper hop strength 12.0
+
+			// YHopper hop strength 12.0
+			//Listener = new cListenerScooterLevitator();
 			Listener = new cListenerQuakeScooterYHopper( 0.2f, 12.0f ); 
             // the two arguments are walkspeed and hop strength -- JC
             
@@ -103,12 +104,11 @@ namespace ACFramework
         public override void update(ACView pactiveview, float dt)
         {
             base.update(pactiveview, dt); //Always call this first
-            /*if (!warningGiven && distanceTo(new cVector3(Game.Border.Lox, Game.Border.Loy,
-                Game.Border.Midz)) < 3.0f)
+            if (distanceTo(new cVector3(Game.Border.Lox, Game.Border.Loy,Game.Border.Loz)) <= 0.1f)
             {
-                warningGiven = true;
-                MessageBox.Show("DON'T GO THROUGH THAT DOOR!!!  DON'T EVEN THINK ABOUT IT!!!");
-            }*/
+                
+                MessageBox.Show("Lava.");
+            }
 			
  
         } 
@@ -175,7 +175,7 @@ namespace ACFramework
 		public override void initialize( cCritterArmed pshooter ) 
 		{ 
 			base.initialize( pshooter );
-			Sprite = new cSpriteQuake(ModelsMD2.Mario);
+			Sprite = new cSpriteQuake(ModelsMD2.Yoshi);
 			//Sprite.FillColor = Color.Crimson;
             // can use setSprite here too
             setRadius(0.1f);
@@ -188,8 +188,36 @@ namespace ACFramework
                 return "cCritter3DPlayerBullet";
             }
         }
-	} 
-	
+	}
+
+	class cCritter3DPlayerBulletMario : cCritterBullet
+	{
+
+		public cCritter3DPlayerBulletMario() { }
+
+		public override cCritterBullet Create()
+		// has to be a Create function for every type of bullet -- JC
+		{
+			return new cCritter3DPlayerBulletMario();
+		}
+
+		public override void initialize(cCritterArmed pshooter)
+		{
+			base.initialize(pshooter);
+			Sprite = new cSpriteQuake(ModelsMD2.Mario);
+			//Sprite.FillColor = Color.Crimson;
+			// can use setSprite here too
+			setRadius(0.1f);
+		}
+
+		public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritter3DPlayerBullet";
+			}
+		}
+	}
 	class cCritter3Dcharacter : cCritter  
 	{ 
 		
@@ -355,8 +383,9 @@ namespace ACFramework
 			if (contains(pcritter)) //disk of pcritter is wholly inside my disk 
 			{
 				Framework.snd.play(Sound.Clap);
-				pcritter.addScore(-100);
-				pcritter.addHealth(-1);
+				
+				pcritter.addHealth(-10);
+				MessageBox.Show("Congrats, you walked into an immobile object! \n Literally the only way you could have lost in this room");
 				return true;
 			}
 			else
@@ -458,7 +487,7 @@ namespace ACFramework
 			WrapFlag = cCritter.BOUNCE; 
 			_seedcount = 0; 
 			setPlayer( new cCritter3DPlayer( this )); 
-			_ptreasure = new cCritterTreasure( this );
+			//_ptreasure = new cCritterTreasure( this );
             //shape = new cCritterShape(this);
             //shape.Sprite = new cSphere( 3, Color.DarkBlue );
             //shape.moveTo(new cVector3( Border.Midx, Border.Hiy, Border.Midz ));
@@ -843,6 +872,7 @@ namespace ACFramework
 				new cSpriteTextureBox(pdwall2.Skeleton, BitmapRes.Sky);
 			pdwall2.Sprite = pspritedoor2;
 			*/
+			Player.moveTo(new cVector3(-27f, -6f, 30));
 		}
 
 		public void setRoom1( )
