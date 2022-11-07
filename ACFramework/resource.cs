@@ -38,6 +38,10 @@ namespace ACFramework
         public static readonly int volcanoWall = 10;
         public static readonly int Graphics2 = 11;
         public static readonly int treeBark = 12;
+        public static readonly int rollerRink = 13;
+        public static readonly int danceFloor = 14; 
+
+
 
         private static readonly string[] Bitmap = new string[] {
                 "dummy", // nonexistent, used as placeholder -- JC
@@ -52,7 +56,10 @@ namespace ACFramework
                 "lava.bmp",
                 "volcanoWall.bmp",
                 "graphics2.bmp",
-                "treebark.bmp"
+                "treebark.bmp", 
+                "RollerRink.bmp" , 
+                "DanceFloor.bmp" , 
+            
                 
 
             };

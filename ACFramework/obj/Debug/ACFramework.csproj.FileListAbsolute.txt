@@ -156,3 +156,12 @@ C:\Users\hnico\OneDrive\Desktop\FinalGamee\ACFramework\obj\Debug\ACFramework.csp
 C:\Users\hnico\OneDrive\Desktop\FinalGamee\ACFramework\obj\Debug\ACFramework.csproj.CopyComplete
 C:\Users\hnico\OneDrive\Desktop\FinalGamee\ACFramework\obj\Debug\ACFramework.exe
 C:\Users\hnico\OneDrive\Desktop\FinalGamee\ACFramework\obj\Debug\ACFramework.pdb
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\bin\Debug\ACFramework.exe
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\bin\Debug\ACFramework.pdb
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.csproj.AssemblyReference.cache
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.Properties.Resources.resources
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.csproj.GenerateResource.cache
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.csproj.CoreCompileInputs.cache
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.csproj.CopyComplete
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.exe
+C:\Users\bilge\OneDrive\Documents\Fall 2022\CIS 375\FinalProject\ACFramework\obj\Debug\ACFramework.pdb

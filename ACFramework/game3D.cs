@@ -452,7 +452,7 @@ namespace ACFramework
 			SkyBox.setSideTexture( cRealBox3.LOZ, BitmapRes.volcanoWall); //Far wall 
 			SkyBox.setSideTexture( cRealBox3.LOX, BitmapRes.volcanoWall ); //left wall 
             SkyBox.setSideTexture( cRealBox3.HIX, BitmapRes.volcanoWall ); //right wall 
-			SkyBox.setSideTexture( cRealBox3.LOY, BitmapRes.lava ); //floor 
+			SkyBox.setSideTexture( cRealBox3.LOY, BitmapRes.lava); //floor 
 			SkyBox.setSideTexture( cRealBox3.HIY, BitmapRes.Sky ); //ceiling 
 		
 			WrapFlag = cCritter.BOUNCE; 
@@ -731,7 +731,7 @@ namespace ACFramework
 			cRealBox3 skeleton = new cRealBox3();
 			skeleton.copy(_border);
 			setSkyBox(skeleton);
-			SkyBox.setAllSidesTexture(BitmapRes.lava);
+			SkyBox.setAllSidesTexture(BitmapRes.rollerRink);
 			SkyBox.setSideTexture(cRealBox3.LOY, BitmapRes.Concrete);
 			SkyBox.setSideSolidColor(cRealBox3.HIY, Color.Blue);
 			_seedcount = 0; ; ;
