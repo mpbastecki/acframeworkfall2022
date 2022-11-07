@@ -406,7 +406,7 @@ namespace ACFramework
 	class cCritterArmed : cCritter 
 	{ 
 		public static readonly float GUNLENGTH = 1.3f; //Ratio of gun length to critter radius, maybe 1.3.
-		public static readonly float WAITSHOOT = 0.06f; // The default interval to wait between shots.
+		public static readonly float WAITSHOOT = 5.0f; // The default interval to wait between shots.
 		protected bool _armed; //Use this to turn the gun on or off.
 		protected float _ageshoot; //Age at last shot, so you wait a bit between shots 
 		protected float _waitshoot; //Time to wait between shots.

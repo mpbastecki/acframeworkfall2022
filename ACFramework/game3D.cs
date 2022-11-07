@@ -617,6 +617,7 @@ namespace ACFramework
 			cCritterTarget chicken1 = new cCritterTarget(this);
 			chicken1.moveTo(new cVector3(0.0f, -5.0f, 0.0f));
 			Carmack1.moveTo(new cVector3(0.0f, -5.0f, 5.0f));
+			
 		} 
 
         public void setRoom1( )
@@ -647,9 +648,12 @@ namespace ACFramework
 			cCritterShooter carmac2 = new cCritterShooter(this);
 
             carmac1.moveTo(new cVector3(10.0f, -15.0f, 7.0f));
-            carmac2.moveTo(new cVector3(10.0f, -15.0f, -7.0f));
+			carmac1.rotate(new cSpin(new cVector3(0.0f,4.7f,0.0f)));
 
-			chicken1.moveTo(new cVector3(-20.0f, -15.0f, 7.0f));
+            carmac2.moveTo(new cVector3(10.0f, -15.0f, -7.0f));
+            carmac2.rotate(new cSpin(new cVector3(0.0f, 4.7f, 0.0f)));
+
+            chicken1.moveTo(new cVector3(-20.0f, -15.0f, 7.0f));
             chicken2.moveTo(new cVector3(-20.0f, -15.0f, -7.0f));
             chicken3.moveTo(new cVector3(-20.0f, -15.0f, 0.0f));
             //chicken1.moveTo
