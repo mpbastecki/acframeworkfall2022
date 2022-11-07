@@ -333,9 +333,9 @@ namespace ACFramework
 			_seedcount = 7; 
 			setPlayer( new cCritter3DPlayer( this )); 
 			_ptreasure = new cCritterTreasure( this );
-            shape = new cCritterShape(this);
-            shape.Sprite = new cSphere( 3, Color.DarkBlue );
-            shape.moveTo(new cVector3( Border.Midx, Border.Hiy, Border.Midz ));
+            //shape = new cCritterShape(this);
+            //shape.Sprite = new cSphere( 3, Color.DarkBlue );
+            //shape.moveTo(new cVector3( Border.Midx, Border.Hiy, Border.Midz ));
 
 			/* In this world the x and y go left and up respectively, while z comes out of the screen.
 		A wall views its "thickness" as in the y direction, which is up here, and its
@@ -430,7 +430,7 @@ namespace ACFramework
 			/* We'll tile our sprites three times along the long sides, and on the
 		short ends, we'll only tile them once, so we reset these two. */
 			pwall4.Sprite = psprit4;
-			pwall4.moveTo(new cVector3(-5.5f, -3.2f, 28.4f));
+			pwall4.moveTo(new cVector3(-10.5f, -3.2f, 28.4f));
 
 			//ramp1------------------------------------------------------------
 
@@ -467,7 +467,7 @@ namespace ACFramework
 			/* We'll tile our sprites three times along the long sides, and on the
 		short ends, we'll only tile them once, so we reset these two. */
 			pwall5.Sprite = psprit5;
-			pwall5.moveTo(new cVector3(0.5f, -4.8f, 21.0f));
+			pwall5.moveTo(new cVector3(6.5f, -4.8f, 21.0f));
 
 			//another platform6----------------------------------------------------------------------------------
 
@@ -555,7 +555,6 @@ namespace ACFramework
 
 			//another platform9----------------------------------------------------------------------------------------
 
-
 			cCritterWall pwall9 = new cCritterWall(
 			   new cVector3(_border.Midx + 17.0f, ycenter, zpos),
 			   new cVector3(_border.Hix - 10.0f, ycenter, zpos),
@@ -569,6 +568,123 @@ namespace ACFramework
 		short ends, we'll only tile them once, so we reset these two. */
 			pwall9.Sprite = psprit9;
 			pwall9.moveTo(new cVector3(-27.0f, -1.2f, -18.2f));
+
+			//another platform rand1-----------------------------------------------------------------------------------------
+
+			cCritterWall pwallrand1 = new cCritterWall(
+			   new cVector3(_border.Midx + 17.0f, ycenter, zpos),
+			   new cVector3(_border.Hix - 10.0f, ycenter, zpos),
+			   height - 0.6f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-6.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+				cSpriteTextureBox pspritrand =
+					new cSpriteTextureBox(pwallrand1.Skeleton, BitmapRes.lava, 16); //Sets all sides 
+				/* We'll tile our sprites three times along the long sides, and on the
+			short ends, we'll only tile them once, so we reset these two. */
+				pwallrand1.Sprite = pspritrand;
+				pwallrand1.moveTo(new cVector3(-27.0f, -0.2f, -27.2f));
+
+			//another platform10------------------------------------------------------------------------------------------
+			cCritterWall pwall10 = new cCritterWall(
+			   new cVector3(_border.Midx + 17.0f, ycenter, zpos),
+			   new cVector3(_border.Hix - 10.0f, ycenter, zpos),
+			   height - 0.6f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-6.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+				cSpriteTextureBox psprit10 =
+					new cSpriteTextureBox(pwall10.Skeleton, BitmapRes.lava, 16); //Sets all sides 
+				/* We'll tile our sprites three times along the long sides, and on the
+			short ends, we'll only tile them once, so we reset these two. */
+				pwall10.Sprite = psprit10;
+				pwall10.moveTo(new cVector3(-18.0f, -1.2f, -18.2f));
+
+			//another log3----------------------------------------------------------------------------------------------
+
+			//subtracting/adding from ycenter slants the platform
+			//zpos rotates it horizontally 
+			cCritterWall plog3 = new cCritterWall(
+			   new cVector3(_border.Midx + 15.8f, ycenter, zpos -11.0f),
+			   new cVector3(_border.Hix - 10.7f, ycenter , zpos ),
+			   height - 0.3f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-3.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+			cSpriteTextureBox pspritlog3 =
+				new cSpriteTextureBox(plog3.Skeleton, BitmapRes.treeBark, 16); //Sets all sides
+			/* We'll tile our sprites three times along the long sides, and on the
+		short ends, we'll only tile them once, so we reset these two. */
+			plog3.Sprite = pspritlog3;
+			//floor coordinate -7.6
+			plog3.moveTo(new cVector3(-12.6f, -2.2f, -9.8f));
+
+
+			//another platform11---------------------------------------------------------------------------------------
+
+			cCritterWall pwall11 = new cCritterWall(
+			   new cVector3(_border.Midx + 17.0f, ycenter, zpos),
+			   new cVector3(_border.Hix - 10.0f, ycenter, zpos),
+			   height - 0.6f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-4.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+				cSpriteTextureBox psprit11 =
+					new cSpriteTextureBox(pwall11.Skeleton, BitmapRes.lava, 16); //Sets all sides 
+				/* We'll tile our sprites three times along the long sides, and on the
+			short ends, we'll only tile them once, so we reset these two. */
+				pwall11.Sprite = psprit11;
+				pwall11.moveTo(new cVector3(-6.5f, 1.2f, -1.4f));
+
+			//another platform12--------------------------------------------------------------------------------------
+			cCritterWall pwall12 = new cCritterWall(
+			   new cVector3(_border.Midx + 17.0f, ycenter, zpos),
+			   new cVector3(_border.Hix - 10.0f, ycenter, zpos),
+			   height - 0.6f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-4.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+				cSpriteTextureBox psprit12 =
+					new cSpriteTextureBox(pwall12.Skeleton, BitmapRes.lava, 16); //Sets all sides 
+				/* We'll tile our sprites three times along the long sides, and on the
+			short ends, we'll only tile them once, so we reset these two. */
+				pwall12.Sprite = psprit12;
+				pwall12.moveTo(new cVector3(-6.5f, -1.2f, 5.4f));
+
+
+			//another platform13----the one that should move----------------------------------------------------------------------------------
+			cCritterWall pwall13 = new cCritterWall(
+			   new cVector3(_border.Midx + 17.0f, ycenter, zpos),
+			   new cVector3(_border.Hix - 10.0f, ycenter, zpos),
+			   height - 0.6f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-4.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+			cSpriteTextureBox psprit13 =
+				new cSpriteTextureBox(pwall13.Skeleton, BitmapRes.lava, 16); //Sets all sides 
+			/* We'll tile our sprites three times along the long sides, and on the
+		short ends, we'll only tile them once, so we reset these two. */
+			pwall13.Sprite = psprit13;
+			pwall13.moveTo(new cVector3(1.5f, -2.2f, 11.4f));
+
+			//another ramp3----------------------------------------------------------------------------------------------
+
+			//subtracting/adding from ycenter slants the platform
+			//zpos rotates it horizontally 
+			cCritterWall pramp3 = new cCritterWall(
+			   new cVector3(_border.Midx + 14.8f, ycenter, zpos - 10.0f),
+			   new cVector3(_border.Hix - 14.7f, ycenter, zpos),
+			   height - 1.0f, //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (-2.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+			cSpriteTextureBox pspritramp3 =
+				new cSpriteTextureBox(pramp3.Skeleton, BitmapRes.treeBark, 16); //Sets all sides
+			/* We'll tile our sprites three times along the long sides, and on the
+		short ends, we'll only tile them once, so we reset these two. */
+			pramp3.Sprite = pspritramp3;
+			//floor coordinate -7.6
+			pramp3.moveTo(new cVector3(1.6f, -2.2f, 15.8f));
 
 
 
