@@ -679,6 +679,7 @@ namespace ACFramework
 			Biota.purgeCritters<cCritterWall>();
 			Biota.purgeCritters<cCritter3Dcharacter>();
 			Biota.purgeCritters<cCritterShape>();
+			Biota.purgeCritters<cCritterShooter>();
 			setBorder(10.0f, 15.0f, 10.0f);
 			cRealBox3 skeleton = new cRealBox3();
 			skeleton.copy(_border);
