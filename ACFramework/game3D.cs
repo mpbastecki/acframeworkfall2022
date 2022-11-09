@@ -68,6 +68,78 @@ namespace ACFramework
 		}
 	}
 
+	class cCritterLavaWall : cCritterWall
+	{
+
+		public cCritterLavaWall(cVector3 enda, cVector3 endb, float thickness, float height, cGame pownergame)
+			: base(enda, endb, thickness, height, pownergame)
+		{
+		}
+
+		public override bool collide(cCritter pcritter)
+		{
+			bool collided = base.collide(pcritter);
+			if (collided && pcritter is cCritter3DPlayer)
+			{
+				Player.setHealth(-1);
+
+				return true;
+			}
+			return false;
+		}
+		public override void update(ACView pactiveview, float dt)
+		{
+			base.update(pactiveview, dt);
+
+			
+		}
+		public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritterLavaWall";
+			}
+		}
+	}
+
+	class cCritterDanceWall : cCritterWall
+	{
+		
+		public cCritterDanceWall(cVector3 enda, cVector3 endb, float thickness, float height, cGame pownergame)
+			: base(enda, endb, thickness, height, pownergame)
+		{
+		}
+
+		public override bool collide(cCritter pcritter)
+		{
+			bool collided = base.collide(pcritter);
+			if (collided && pcritter is cCritter3DPlayer)
+			{
+                if (!cGame3D.setListener) 
+				{
+					Player.Listener = new cListenerDance();
+				}
+				cGame3D.setListener = true;
+				return true;
+			}
+			return false;
+		}
+		public override void update(ACView pactiveview, float dt)
+		{
+			base.update(pactiveview, dt);
+
+
+		}
+		public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritterDanceWall";
+			}
+		}
+	}
+
+
 	//==============Critters for the cGame3D: Player, Ball, Treasure ================ 
 
 	class cCritter3DPlayer : cCritterArmedPlayer 
@@ -104,11 +176,11 @@ namespace ACFramework
         public override void update(ACView pactiveview, float dt)
         {
             base.update(pactiveview, dt); //Always call this first
-            if (distanceTo(new cVector3(Game.Border.Lox, Game.Border.Loy,Game.Border.Loz)) <= 0.1f)
-            {
+            //if (distanceTo(new cVector3(0.0f, Game.Border.Loy,0.0f)) <= 5.0f)
+            //{
                 
-                MessageBox.Show("Lava.");
-            }
+              //  MessageBox.Show("Lava.");
+            //}
 			
  
         } 
@@ -458,8 +530,8 @@ namespace ACFramework
 		public static bool roomLock = false;
 		public static bool sentMessage = false;
 		public static bool HarpSound = false;
+		public static bool setListener = false;
 
-		
 		public cGame3D() 
 		{
 			doorcollision = false; 
@@ -515,7 +587,6 @@ namespace ACFramework
 				/* We'll tile our sprites three times along the long sides, and on the
 			short ends, we'll only tile them once, so we reset these two. */
           pwall.Sprite = pspritebox;
-
 
 
 			//-------------------create a new platform-----------------------------------------------------------
@@ -997,7 +1068,7 @@ namespace ACFramework
 			float ycenter = -_border.YRadius + height / 2.0f;
 			float wallthickness = cGame3D.WALLTHICKNESS;
 
-			cCritterWall pwall = new cCritterWall(
+			cCritterDanceWall pwall = new cCritterDanceWall(
 				new cVector3(_border.Midx + 3.0f, ycenter, zpos),
 				new cVector3(_border.Hix + 3.0f, ycenter, zpos),
 				height, //thickness param for wall's dy which goes perpendicular to the 
@@ -1021,8 +1092,9 @@ namespace ACFramework
 			//Biota.purgeCritters<cCritter3Dcharacter>();
             for (int i = 0; i < _seedcount; i++) 
 				new cCritter3Dcharacter( this );
-            Player.moveTo(new cVector3(0.0f, Border.Loy, Border.Hiz - 3.0f)); 
-				/* We start at hiz and move towards	loz */ 
+			Player.moveTo(new cVector3(-27f, -6f, 30));
+			//Player.moveTo(new cVector3(0.0f, Border.Loy, Border.Hiz - 3.0f)); 
+			/* We start at hiz and move towards	loz */
 		} 
 
 		

@@ -1341,5 +1341,79 @@ namespace ACFramework
 
     }
 
+    class cListenerDance : cListener
+    {
+        protected float _walkspeed; // how fast you can walk 
 
+        public cListenerDance(float walksp = 6.0f)
+        {
+            _walkspeed = walksp;
+        }
+
+        public override void listen(float dt, cCritter pcritter)
+        {
+            cKeyInfo pcontroller = Framework.Keydev;
+            /* Note that since I set the velocity to 0.0 when I'm not
+            pressing an arrow key, this means that acceraltion forces don't get
+            to have accumulating effects on a critter with a cListenerScooter listener. So rather
+            than having some very half-way kinds of acceleration effects, I go aheand and
+            set acceleration to 0.0 in here. */
+            //	pcritter->setAcceleration(cVector(0.0, pcritter->acceleration().y(), 0.0));	 
+            float yvelocity = pcritter.Velocity.Y; /* Save this and restore it before we leave
+			    this call, so that gravity can act in the y direction. */
+            //Translate 
+            /* I want to move the critter position. But I don't
+            just use a moveTo because I want to have a correct _velocity inside the 
+            critter so I can use it to hit things and bounce and so on.  So I change
+            the velocity.*/
+            bool inreverse = false; //Only set TRUE if currently pressing VK_DOWN 
+            bool left = Framework.Keydev[vk.A];
+            bool right = Framework.Keydev[vk.D];
+            bool up = Framework.Keydev[vk.W];
+            bool down = Framework.Keydev[vk.S];
+            bool flyup = Framework.Keydev[vk.U];
+            bool flydown = Framework.Keydev[vk.I];
+            
+            pcritter.clearForcelist();  // in case forces were added somewhere
+            pcritter.Game.AddOn = "Position: (" + pcritter.Position.X.ToString() + ", " +
+                pcritter.Position.Y.ToString() + ", " + pcritter.Position.Z.ToString() + ")";
+            if (up)
+                pcritter.Sprite.setstate(State.Other, 160, 177, StateType.Repeat);
+            if (down)
+                pcritter.Sprite.setstate(State.Other, 45, 71, StateType.Repeat);
+            if (left)
+                pcritter.Sprite.setstate(State.Other, 123, 134, StateType.Repeat);
+            if (right)
+                pcritter.Sprite.setstate(State.Other, 71, 84, StateType.Repeat);
+            if (!up && !down && !flyup && !flydown)
+                pcritter.Velocity = new cVector3(0.0f, 0.0f, 0.0f);
+            
+            Framework.view.pviewpointcritter().Listener = new cListenerViewerFly();
+            Framework.view.pviewpointcritter().moveTo(new cVector3(-5f,-5f,-5f));
+            pcritter.moveTo(new cVector3(0f, -7, 0f));
+            //Now restore the y velocity.
+            //            pcritter.Velocity = new cVector3(pcritter.Velocity.X, yvelocity, pcritter.Velocity.Z);
+            //	Real inreversesign = inreverse?-1.0:1.0; 
+
+            
+            /* If you get here, you've pressed an arrow key or a hop key. */
+            
+        }
+
+        public virtual float WalkSpeed
+        {
+            get
+            { return _walkspeed; }
+        }
+
+        public override string RuntimeClass
+        {
+            get
+            {
+                return "cListenerDance";
+            }
+        }
+
+
+    }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
