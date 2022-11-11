@@ -1056,9 +1056,14 @@ namespace ACFramework
 			setBorder(64.0f, 15.0f, 64.0f);
 			cRealBox3 skeleton = new cRealBox3();
 			skeleton.copy(_border);
-			setSkyBox(skeleton);
+
+            shape = new cCritterShape(this);
+            shape.Sprite = new cSphere(3, Color.Silver);
+            shape.moveTo(new cVector3(Border.Midx, Border.Hiy, Border.Midz));
+
+            setSkyBox(skeleton);
 			SkyBox.setAllSidesTexture(BitmapRes.rollerRink);
-			SkyBox.setSideTexture(cRealBox3.LOY, BitmapRes.Concrete);
+			SkyBox.setSideSolidColor(cRealBox3.LOY, Color.Black);
 			SkyBox.setSideSolidColor(cRealBox3.HIY, Color.Blue);
 			_seedcount = 0; ; ;
 			Player.setMoveBox(new cRealBox3(64.0f, 15.0f, 64.0f));
@@ -1069,15 +1074,15 @@ namespace ACFramework
 			float wallthickness = cGame3D.WALLTHICKNESS;
 
 			cCritterDanceWall pwall = new cCritterDanceWall(
-				new cVector3(_border.Midx + 3.0f, ycenter, zpos),
-				new cVector3(_border.Hix + 3.0f, ycenter, zpos),
-				height, //thickness param for wall's dy which goes perpendicular to the 
+				new cVector3(_border.Midx + 50.0f , ycenter, zpos),
+				new cVector3(_border.Hix - 20.0f, ycenter, zpos),
+				height -1.0f , //thickness param for wall's dy which goes perpendicular to the 
 						//baseline established by the frist two args, up the screen 
-				wallthickness, //height argument for this wall's dz  goes into the screen 
+				wallthickness -20.0f, //height argument for this wall's dz  goes into the screen 
 				this);
 			cSpriteTextureBox pspritebox =
-				new cSpriteTextureBox(pwall.Skeleton, BitmapRes.Concrete); //Sets all sides
-																		   //
+				new cSpriteTextureBox(pwall.Skeleton, BitmapRes.danceFloor); //Sets all sides
+			pwall.moveTo(new cVector3(0, -70.0f , 0)); 														   //
 
 			/* We'll tile our sprites three times along the long sides, and on the
         short ends, we'll only tile them once, so we reset these two. */
@@ -1085,6 +1090,7 @@ namespace ACFramework
 			wentThrough = true;
 			startNewRoom = Age;
 		}
+
 
 		public override void seedCritters() 
 		{
