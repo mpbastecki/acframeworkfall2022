@@ -39,8 +39,8 @@ namespace ACFramework
         public static readonly int Graphics2 = 11;
         public static readonly int treeBark = 12;
         public static readonly int rollerRink = 13;
-        public static readonly int danceFloor = 14; 
-
+        public static readonly int danceFloor = 14;
+        public static readonly int discoBall = 15; 
 
 
         private static readonly string[] Bitmap = new string[] {
@@ -59,7 +59,9 @@ namespace ACFramework
                 "treebark.bmp", 
                 "RollerRink.bmp" , 
                 "DanceFloor.bmp" , 
+                "discoBall.bmp"
             
+           
                 
 
             };
