@@ -944,6 +944,7 @@ namespace ACFramework
 			pdwall2.Sprite = pspritedoor2;
 			*/
 			Player.moveTo(new cVector3(-27f, -6f, 30));
+			
 		}
 
 		public void setRoom1( )

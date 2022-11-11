@@ -1389,7 +1389,7 @@ namespace ACFramework
                 pcritter.Velocity = new cVector3(0.0f, 0.0f, 0.0f);
             
             Framework.view.pviewpointcritter().Listener = new cListenerViewerFly();
-            Framework.view.pviewpointcritter().moveTo(new cVector3(-5f,-5f,-5f));
+            Framework.view.pviewpointcritter().moveTo(new cVector3(.44f,-5f,13f));
             pcritter.moveTo(new cVector3(0f, -7, 0f));
             //Now restore the y velocity.
             //            pcritter.Velocity = new cVector3(pcritter.Velocity.X, yvelocity, pcritter.Velocity.Z);
