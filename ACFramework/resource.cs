@@ -40,7 +40,7 @@ namespace ACFramework
         public static readonly int treeBark = 12;
         public static readonly int rollerRink = 13;
         public static readonly int danceFloor = 14;
-        public static readonly int discoBall = 15; 
+        
 
 
         private static readonly string[] Bitmap = new string[] {
@@ -58,9 +58,7 @@ namespace ACFramework
                 "graphics2.bmp",
                 "treebark.bmp", 
                 "RollerRink.bmp" , 
-                "DanceFloor.bmp" , 
-                "discoBall.bmp"
-            
+                "DanceFloor.bmp"     
            
                 
 
@@ -374,6 +372,7 @@ namespace ACFramework
         public static readonly int Mario = 8;
         public static readonly int Carmack = 9;
         public static readonly int Chicken = 10;
+        public static readonly int Luigi = 11;
 
         // at least one must be set true
         private static readonly ModelsMD2Info[] minfo = {
@@ -387,7 +386,8 @@ namespace ACFramework
             new ModelsMD2Info( "Yoshi", "cyan yoshi.pcx", 0.2f, false ),
             new ModelsMD2Info( "Mario", "Mario.pcx", 0.2f, false),
             new ModelsMD2Info( "Carmack", "john.pcx", 0.2f, true),
-            new ModelsMD2Info( "Chicken", "Stoopid.pcx", 0.2f, true)
+            new ModelsMD2Info( "Chicken", "Stoopid.pcx", 0.2f, true),
+            new ModelsMD2Info( "Mario", "Luigi.pcx", 0.2f, true)
         };            
 
         private static int[] randomCritters;

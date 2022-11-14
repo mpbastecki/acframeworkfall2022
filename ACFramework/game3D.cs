@@ -118,6 +118,7 @@ namespace ACFramework
                 if (!cGame3D.setListener) 
 				{
 					Player.Listener = new cListenerDance();
+					MessageBox.Show("Use the movement keys to \nincrease your score to 100 with funky fresh moves");
 				}
 				cGame3D.setListener = true;
 				return true;
@@ -457,7 +458,7 @@ namespace ACFramework
 				Framework.snd.play(Sound.Clap);
 				
 				pcritter.addHealth(-10);
-				MessageBox.Show("Congrats, you walked into an immobile object! \n Literally the only way you could have lost in this room");
+				MessageBox.Show("Congrats, you walked into an immobile object! \nLiterally the only way you could have lost in this room");
 				return true;
 			}
 			else
@@ -510,6 +511,46 @@ namespace ACFramework
 			get
 			{
 				return "cCritterTarget";
+			}
+		}
+	}
+
+	class cCritterDanceBoss : cCritter3Dcharacter
+	{   // Try jumping through this hoop
+
+		public cCritterDanceBoss(cGame pownergame) :
+		base(pownergame)
+		{
+			/* The sprites look nice from afar, but bitmap speed is really slow
+		when you get close to them, so don't use this. */
+			_collidepriority = cCollider.CP_PLAYER + 1;
+			Sprite = new cSpriteQuake(ModelsMD2.Luigi);
+			setRadius(cGame3D.CRITTERMAXRADIUS);
+			FixedFlag = false;
+			MaxSpeed = 0.0f;
+		}
+
+		public override bool collide(cCritter pcritter)
+		{
+			if (contains(pcritter)) //disk of pcritter is wholly inside my disk 
+			{
+				Framework.snd.play(Sound.Clap);
+
+				pcritter.addHealth(-10);
+				MessageBox.Show("Congrats, you walked into an immobile object! \nLiterally the only way you could have lost in this room");
+				return true;
+			}
+			else
+				return false;
+		}
+
+
+
+		public override string RuntimeClass
+		{
+			get
+			{
+				return "cCritterDanceBoss";
 			}
 		}
 	}
@@ -1062,7 +1103,10 @@ namespace ACFramework
             shape.Sprite = new cSphere(3, Color.Silver);
             shape.moveTo(new cVector3(Border.Midx, Border.Hiy, Border.Midz));
 
-            setSkyBox(skeleton);
+			cCritterDanceBoss Luigi1 = new cCritterDanceBoss(this);
+			Luigi1.moveTo(new cVector3(3f, -7, 3f));
+			
+			setSkyBox(skeleton);
 			SkyBox.setAllSidesTexture(BitmapRes.rollerRink);
 			SkyBox.setSideSolidColor(cRealBox3.LOY, Color.Black);
 			SkyBox.setSideSolidColor(cRealBox3.HIY, Color.Blue);
@@ -1203,7 +1247,7 @@ namespace ACFramework
 					}
 					else
 					{
-						MessageBox.Show("This door is locked, finish the mission. \n Get a score of 2 or more");
+						MessageBox.Show("This door is locked, finish the mission. \nGet a score of 2 or more");
 						sentMessage = true;
                         Framework.snd.play(Sound.Knockdoor);
                     }
@@ -1224,6 +1268,14 @@ namespace ACFramework
 
 				doorcollision = false;
             }
+			if (Score >= 100)
+            {
+				Framework.snd.play(Sound.Clap);
+				MessageBox.Show("Congrats, you won!!!!!!!!!!!!!!!!!");
+				_gameover = true;
+				return;
+
+			}
 		} 
 		
 	} 

@@ -1373,24 +1373,35 @@ namespace ACFramework
             bool down = Framework.Keydev[vk.S];
             bool flyup = Framework.Keydev[vk.U];
             bool flydown = Framework.Keydev[vk.I];
-            
+
             pcritter.clearForcelist();  // in case forces were added somewhere
             pcritter.Game.AddOn = "Position: (" + pcritter.Position.X.ToString() + ", " +
                 pcritter.Position.Y.ToString() + ", " + pcritter.Position.Z.ToString() + ")";
             if (up)
+            {
                 pcritter.Sprite.setstate(State.Other, 160, 177, StateType.Repeat);
-            if (down)
-                pcritter.Sprite.setstate(State.Other, 45, 71, StateType.Repeat);
+                pcritter.addScore(1);
+            }
+            if (down) { 
+            pcritter.Sprite.setstate(State.Other, 45, 71, StateType.Repeat);
+            pcritter.addScore(1);
+            }
             if (left)
+            {
                 pcritter.Sprite.setstate(State.Other, 123, 134, StateType.Repeat);
+                pcritter.addScore(1);
+            }
             if (right)
+            {
                 pcritter.Sprite.setstate(State.Other, 71, 84, StateType.Repeat);
+                pcritter.addScore(1);
+            }
             if (!up && !down && !flyup && !flydown)
                 pcritter.Velocity = new cVector3(0.0f, 0.0f, 0.0f);
             
             Framework.view.pviewpointcritter().Listener = new cListenerViewerFly();
             Framework.view.pviewpointcritter().moveTo(new cVector3(.44f,-5f,13f));
-            pcritter.moveTo(new cVector3(0f, -7, 0f));
+            pcritter.moveTo(new cVector3(-3f, -7, -3f));
             //Now restore the y velocity.
             //            pcritter.Velocity = new cVector3(pcritter.Velocity.X, yvelocity, pcritter.Velocity.Z);
             //	Real inreversesign = inreverse?-1.0:1.0; 
