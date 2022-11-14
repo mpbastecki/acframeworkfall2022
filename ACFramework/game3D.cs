@@ -560,7 +560,7 @@ namespace ACFramework
 		public static readonly float PLAYERRADIUS = 0.2f; 
 		public static readonly float MAXPLAYERSPEED = 30.0f; 
 		private cCritterTreasure _ptreasure;
-        //private cCritterShape shape;
+        private cCritterShape shape;
         private bool doorcollision;
         private bool wentThrough = false;
         private float startNewRoom;
