@@ -146,7 +146,7 @@ namespace ACFramework
 	class cCritter3DPlayer : cCritterArmedPlayer 
 	{ 
         private bool warningGiven = false;
-		
+		private char easyMode = 'N';
         public cCritter3DPlayer( cGame pownergame ) 
             : base( pownergame ) 
 		{ 
@@ -174,7 +174,18 @@ namespace ACFramework
                 new cVector3( 0.0f, 1.0f, 0.0f ), Position); 
 		}
 
-        public override void update(ACView pactiveview, float dt)
+		public char EasyMode
+		{
+			get
+			{
+				return easyMode;
+			}
+			set
+			{
+				easyMode = value;
+			}
+		}
+		public override void update(ACView pactiveview, float dt)
         {
             base.update(pactiveview, dt); //Always call this first
             //if (distanceTo(new cVector3(0.0f, Game.Border.Loy,0.0f)) <= 5.0f)
@@ -1246,8 +1257,8 @@ namespace ACFramework
             pwall.Sprite = stb;
 			*/
 			cCritterDoor pdwall = new cCritterDoor( 
-				new cVector3( _border.Lox, _border.Loy, _border.Midz ), 
-				new cVector3( _border.Lox, _border.Midy - 3, _border.Midz ), 
+				new cVector3( _border.Lox, _border.Loy +3, _border.Midz ), 
+				new cVector3( _border.Lox, _border.Midy, _border.Midz ), 
 				0.1f, 2, this ); 
 			cSpriteTextureBox pspritedoor = 
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
@@ -1268,7 +1279,8 @@ namespace ACFramework
 		public void setRoom1( )
         {
             Biota.purgeCritters<cCritterWall>();
-            Biota.purgeCritters<cCritter3Dcharacter>();
+			Biota.purgeCritters<cCritterLavaWall>();
+			Biota.purgeCritters<cCritter3Dcharacter>();
             Biota.purgeCritters<cCritterShape>();
 			Biota.purgeCritters<cCritterShooter>();
             setBorder(50.0f, 15.0f, -20.0f); 
@@ -1489,8 +1501,12 @@ namespace ACFramework
 
 
 			//pwall.rotate(new cSpin(((float)Math.PI) / 4.0f, new cVector3(1.0f, 0.0f, 0.0f)));
+			if(((cCritter3DPlayer)Player).EasyMode == 'Y')
+            {
+				Biota.purgeCritters<cCritterLavaWall>();
+			}
 
-			
+
 			if (wentThrough && (Age - startNewRoom) > 2.0f)
             {
                 Framework.snd.play(Sound.Doorcreak);

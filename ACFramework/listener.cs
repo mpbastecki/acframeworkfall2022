@@ -447,7 +447,7 @@ namespace ACFramework
 
             if (reloadSound)
             {
-                
+                ((cCritter3DPlayer)pcritter).EasyMode = 'Y';
                 Framework.snd.play(Sound.Death2);
             }
           
