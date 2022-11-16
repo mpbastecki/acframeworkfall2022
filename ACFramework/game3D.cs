@@ -641,6 +641,7 @@ namespace ACFramework
 			pwalld.Sprite = pspritd;
 			//floor coordinate -7.6
 			pwalld.moveTo(new cVector3(0.0f, -7.9f, 0.0f));
+
 			//-------------------create a new platform-----------------------------------------------------------
 
 			//beginning platform in bottom corner
@@ -857,7 +858,7 @@ namespace ACFramework
 			/* We'll tile our sprites three times along the long sides, and on the
 		short ends, we'll only tile them once, so we reset these two. */
 			pwall8.Sprite = psprit8;
-			pwall8.moveTo(new cVector3(-30.0f, -7.5f, -1.2f));
+			pwall8.moveTo(new cVector3(-30.0f, -5.5f, -1.2f));
 
 			//another ramp2---------------------------------------------------------------------------------------------
 
@@ -1185,7 +1186,7 @@ namespace ACFramework
 			   new cVector3(_border.Hix - 20.0f, ycenter, zpos),
 			   height - 0.6f, //thickness param for wall's dy which goes perpendicular to the 
 							  //baseline established by the frist two args, up the screen 
-			   wallthickness + (-2.0f), //height argument for this wall's dz  goes into the screen 
+			   wallthickness + (-3.0f), //height argument for this wall's dz  goes into the screen 
 			   this);
 			cSpriteTextureBox psprit19 =
 				new cSpriteTextureBox(pwall19.Skeleton, BitmapRes.lava, 16); //Sets all sides 
@@ -1246,8 +1247,8 @@ namespace ACFramework
             pwall.Sprite = stb;
 			*/
 			cCritterDoor pdwall = new cCritterDoor( 
-				new cVector3( _border.Lox, _border.Loy, _border.Midz ), 
-				new cVector3( _border.Lox, _border.Midy - 3, _border.Midz ), 
+				new cVector3( _border.Lox, _border.Loy + 3, _border.Midz ), 
+				new cVector3( _border.Lox, _border.Midy, _border.Midz ), 
 				0.1f, 2, this ); 
 			cSpriteTextureBox pspritedoor = 
 				new cSpriteTextureBox( pdwall.Skeleton, BitmapRes.Door ); 
