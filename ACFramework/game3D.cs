@@ -118,7 +118,7 @@ namespace ACFramework
                 if (!cGame3D.setListener) 
 				{
 					Player.Listener = new cListenerDance();
-					MessageBox.Show("Use the movement keys to \nincrease your score to 100 with funky fresh moves");
+					MessageBox.Show("Use the movement keys to \nincrease your score to 1000 with funky fresh moves");
 				}
 				cGame3D.setListener = true;
 				return true;
@@ -1529,7 +1529,7 @@ namespace ACFramework
 
 				doorcollision = false;
             }
-			if (Score >= 100)
+			if (Score >= 1000)
             {
 				Framework.snd.play(Sound.Clap);
 				MessageBox.Show("Congrats, you won!!!!!!!!!!!!!!!!!");

@@ -447,6 +447,7 @@ namespace ACFramework
 
             if (reloadSound)
             {
+                
                 Framework.snd.play(Sound.Death2);
             }
           
@@ -1399,16 +1400,17 @@ namespace ACFramework
             if (!up && !down && !flyup && !flydown)
                 pcritter.Velocity = new cVector3(0.0f, 0.0f, 0.0f);
             
+            
+            pcritter.moveTo(new cVector3(-3f, -7, -3f));
             Framework.view.pviewpointcritter().Listener = new cListenerViewerFly();
             Framework.view.pviewpointcritter().moveTo(new cVector3(.44f,-5f,13f));
-            pcritter.moveTo(new cVector3(-3f, -7, -3f));
             //Now restore the y velocity.
             //            pcritter.Velocity = new cVector3(pcritter.Velocity.X, yvelocity, pcritter.Velocity.Z);
             //	Real inreversesign = inreverse?-1.0:1.0; 
 
-            
+
             /* If you get here, you've pressed an arrow key or a hop key. */
-            
+
         }
 
         public virtual float WalkSpeed
