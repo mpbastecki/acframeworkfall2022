@@ -625,6 +625,22 @@ namespace ACFramework
 			short ends, we'll only tile them once, so we reset these two. */
 			//pwall.Sprite = pspritebox; 
 
+			//lava floor, die when you hit it---------------------------------------------------------------------
+
+			cCritterLavaWall pwalld = new cCritterLavaWall(
+			   new cVector3(-31.55f, -7.55f, 31.55f),
+			   new cVector3(31.55f, -7.55f, -31.55f),
+			   height , //thickness param for wall's dy which goes perpendicular to the 
+							  //baseline established by the frist two args, up the screen 
+			   wallthickness + (80.0f), //height argument for this wall's dz  goes into the screen 
+			   this);
+			cSpriteTextureBox pspritd =
+				new cSpriteTextureBox(pwalld.Skeleton, BitmapRes.lava); //Sets all sides 
+			/* We'll tile our sprites three times along the long sides, and on the
+		short ends, we'll only tile them once, so we reset these two. */
+			pwalld.Sprite = pspritd;
+			//floor coordinate -7.6
+			pwalld.moveTo(new cVector3(0.0f, -7.9f, 0.0f));
 			//-------------------create a new platform-----------------------------------------------------------
 
 			//beginning platform in bottom corner
@@ -641,7 +657,7 @@ namespace ACFramework
 		short ends, we'll only tile them once, so we reset these two. */
 			pwall1.Sprite = psprit;
 			//floor coordinate -7.6
-			pwall1.moveTo(new cVector3(-27.6f, -7.6f, 29.6f));
+			pwall1.moveTo(new cVector3(-27.6f, -6.6f, 29.6f));
 
 			//another platform-----------------------------------------------------------------------------------
 
@@ -692,7 +708,7 @@ namespace ACFramework
 			/* We'll tile our sprites three times along the long sides, and on the
 		short ends, we'll only tile them once, so we reset these two. */
 			pwall4.Sprite = psprit4;
-			pwall4.moveTo(new cVector3(-2.0f, -7.8f, 28.4f));
+			pwall4.moveTo(new cVector3(-2.0f, -6.8f, 28.4f));
 
 			//ramp1------------------------------------------------------------
 
