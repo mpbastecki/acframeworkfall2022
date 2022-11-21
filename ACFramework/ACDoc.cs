@@ -28,7 +28,7 @@ namespace ACFramework
             bool didareset = false;
             if (_pgame.NewGame)
             {
-                MessageBox.Show("PRESS ENTER\nTo Start Game.");
+                MessageBox.Show("PRESS ENTER TO START GAME.\nThe controls are: \nWASD for movement\nF to fire\nSpace to jump\nR for first room cheat");
                 RESTART = true;
                 _pgame.start();
                 didareset = true;

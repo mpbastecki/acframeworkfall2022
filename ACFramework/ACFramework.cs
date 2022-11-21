@@ -270,7 +270,7 @@ namespace ACFramework
         {
             if (pdoc.pgame().GameOver )
             {
-                MessageBox.Show(pdoc.pgame().GameOverMessage);
+                //MessageBox.Show(pdoc.pgame().GameOverMessage);
                 Exit();
             }
             
