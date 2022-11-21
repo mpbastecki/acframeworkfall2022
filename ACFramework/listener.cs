@@ -1403,7 +1403,8 @@ namespace ACFramework
             
             pcritter.moveTo(new cVector3(-3f, -7, -3f));
             Framework.view.pviewpointcritter().Listener = new cListenerViewerFly();
-            Framework.view.pviewpointcritter().moveTo(new cVector3(.44f,-5f,13f));
+            Framework.view.pviewpointcritter().moveTo(new cVector3(.44f,-4.5f,13f));
+            Framework.view.pviewpointcritter().lookAt(new cVector3(0f, 0f, 0f));
             //Now restore the y velocity.
             //            pcritter.Velocity = new cVector3(pcritter.Velocity.X, yvelocity, pcritter.Velocity.Z);
             //	Real inreversesign = inreverse?-1.0:1.0; 

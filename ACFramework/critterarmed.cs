@@ -26,7 +26,7 @@ namespace ACFramework
         {
 		    _pshooter = null; 
 		    _shooterindex = cBiota.NOINDEX; 
-		    _hitstrength = 1; 
+		    _hitstrength = 10; 
 		    _dieatedges = true; 
 			_defaultprismdz = cSprite.BULLETPRISMDZ; 
 			_value = 0; 

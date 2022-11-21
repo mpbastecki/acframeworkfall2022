@@ -461,22 +461,19 @@ namespace ACFramework
 
 		}
 
-
 		public override bool collide(cCritter pcritter)
 		{
 			if (contains(pcritter)) //disk of pcritter is wholly inside my disk 
 			{
 				Framework.snd.play(Sound.Clap);
-				
 				pcritter.addHealth(-10);
 				MessageBox.Show("Congrats, you walked into an immobile object! \nLiterally the only way you could have lost in this room");
+
 				return true;
 			}
 			else
 				return false;
 		}
-
-		//Checks if pcritter inside.
 
 		public override int collidesWith(cCritter pothercritter)
 		{
@@ -485,9 +482,6 @@ namespace ACFramework
 			else
 				return cCollider.DONTCOLLIDE;
 		}
-
-		/* Only collide
-			with cCritter3DPlayer. */
 
 		public override string RuntimeClass
 		{
@@ -1300,15 +1294,13 @@ namespace ACFramework
 			cCritterTarget chicken2 = new cCritterTarget(this);
 			cCritterTarget chicken3 = new cCritterTarget(this);
 
-			
-
 			cCritterShooter carmac1 = new cCritterShooter(this);
 			cCritterShooter carmac2 = new cCritterShooter(this);
 
-            carmac1.moveTo(new cVector3(10.0f, -15.0f, 7.0f));
+            carmac1.moveTo(new cVector3(10.0f, -6.8f, 7.0f));
 			carmac1.rotate(new cSpin(new cVector3(0.0f,4.7f,0.0f)));
 
-            carmac2.moveTo(new cVector3(10.0f, -15.0f, -7.0f));
+            carmac2.moveTo(new cVector3(10.0f, -6.8f, -7.0f));
             carmac2.rotate(new cSpin(new cVector3(0.0f, 4.7f, 0.0f)));
 
             chicken1.moveTo(new cVector3(-20.0f, -15.0f, 7.0f));
@@ -1341,7 +1333,7 @@ namespace ACFramework
                                     //baseline established by the frist two args, up the screen 
                             wallthickness, //height argument for this wall's dz  goes into the screen 
                             this);
-            cSpriteTextureBox pspritebox1 =
+            cSpriteTextureBox pspritebox_1 =
                 new cSpriteTextureBox(pwall_1.Skeleton, BitmapRes.Concrete); //Sets all sides 
 
             //----------------------------------------------------------------------------------------------
@@ -1356,7 +1348,7 @@ namespace ACFramework
                                     //baseline established by the frist two args, up the screen 
                             wallthickness, //height argument for this wall's dz  goes into the screen 
                             this);
-            cSpriteTextureBox pspritebox2 =
+            cSpriteTextureBox pspritebox_2 =
                 new cSpriteTextureBox(pwall_1.Skeleton, BitmapRes.Wood2); //Sets all sides 
 
 
@@ -1370,6 +1362,8 @@ namespace ACFramework
 			pdwall.Sprite = pspritedoor;
 
 			pwall.Sprite = pspritebox;
+			pwall_1.Sprite = pspritebox_1;
+			pwall_2.Sprite = pspritebox_2;
             wentThrough = true;
             startNewRoom = Age;
 
@@ -1400,7 +1394,7 @@ namespace ACFramework
 			SkyBox.setAllSidesTexture(BitmapRes.rollerRink);
 			SkyBox.setSideSolidColor(cRealBox3.LOY, Color.Black);
 			SkyBox.setSideSolidColor(cRealBox3.HIY, Color.Blue);
-			_seedcount = 0; ; ;
+			_seedcount = 0;
 			Player.setMoveBox(new cRealBox3(64.0f, 15.0f, 64.0f));
 			float zpos = 0.0f; /* Point on the z axis where we set down the wall.  0 would be center,
 			halfway down the hall, but we can offset it if we like. */
