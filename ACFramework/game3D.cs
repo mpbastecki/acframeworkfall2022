@@ -1558,9 +1558,10 @@ namespace ACFramework
             }
 			if (Score >= 1000)
             {
+				_gameover = true;
 				Framework.snd.play(Sound.Clap);
 				MessageBox.Show("Congrats, you won!!!!!!!!!!!!!!!!!");
-				_gameover = true;
+				
 				return;
 
 			}
