@@ -1401,7 +1401,9 @@ namespace ACFramework
                 pcritter.Velocity = new cVector3(0.0f, 0.0f, 0.0f);
             
             
-            pcritter.moveTo(new cVector3(-3f, -7, -3f));
+            pcritter.moveTo(new cVector3(0f, -7, 3f));
+           // pcritter.rotate(new cSpin(new cVector3(0.0f, 0.2f, 0.0f)));
+           // pcritter.lookAt(new cVector3(0.44f, -4.5f, 13.0f));
             Framework.view.pviewpointcritter().Listener = new cListenerViewerFly();
             Framework.view.pviewpointcritter().moveTo(new cVector3(.44f,-4.5f,13f));
             Framework.view.pviewpointcritter().lookAt(new cVector3(0f, 0f, 0f));

@@ -1268,8 +1268,15 @@ namespace ACFramework
 			pdwall2.Sprite = pspritedoor2;
 			*/
 			Player.moveTo(new cVector3(-27f, -6f, 30));
-			
-		}
+
+            //Biota.purgeCritters<cCritterWall>();
+            //Biota.purgeCritters<cCritterLavaWall>();
+            //Biota.purgeCritters<cCritter3Dcharacter>();
+            //Biota.purgeCritters<cCritterShape>();
+            //Biota.purgeCritters<cCritterShooter>();
+			//setRoom2();
+
+        }
 
 		public void setRoom1( )
         {
@@ -1354,10 +1361,12 @@ namespace ACFramework
 
             //----------------------------------------------------------------------------------------------
             cCritterDoor pdwall = new cCritterDoor(
-				 new cVector3(_border.Lox + 50f, _border.Loy, _border.Midz+3),
-				 new cVector3(_border.Lox + 50f , _border.Midy-3.5f, _border.Midz+3),
+				 new cVector3(_border.Lox + 45f, _border.Loy, _border.Midz-10f),
+				 new cVector3(_border.Lox + 45f , _border.Midy-3.5f, _border.Midz-10),
 				 0.5f, 2, this);
-			cSpriteTextureBox pspritedoor =
+            pdwall.rotate(new cSpin(new cVector3(0.0f, 4.7f, 0.0f)));
+
+            cSpriteTextureBox pspritedoor =
 				new cSpriteTextureBox(pdwall.Skeleton, BitmapRes.Door);
 			pdwall.Sprite = pspritedoor;
 
@@ -1383,12 +1392,15 @@ namespace ACFramework
 			cRealBox3 skeleton = new cRealBox3();
 			skeleton.copy(_border);
 
+            Player.moveTo(new cVector3(0.0f, -0.0f, 0.0f));
+            //Player.rotate(new cSpin(new cVector3(0.0f, 4.7f, 0.0f)));
+
             shape = new cCritterShape(this);
             shape.Sprite = new cSphere(3, Color.Silver);
             shape.moveTo(new cVector3(Border.Midx, Border.Hiy, Border.Midz));
 
 			cCritterDanceBoss Luigi1 = new cCritterDanceBoss(this);
-			Luigi1.moveTo(new cVector3(3f, -7, 3f));
+			Luigi1.moveTo(new cVector3(0f, -7, -5f));
 			
 			setSkyBox(skeleton);
 			SkyBox.setAllSidesTexture(BitmapRes.rollerRink);
