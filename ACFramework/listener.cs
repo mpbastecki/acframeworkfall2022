@@ -1376,8 +1376,7 @@ namespace ACFramework
             bool flydown = Framework.Keydev[vk.I];
 
             pcritter.clearForcelist();  // in case forces were added somewhere
-            pcritter.Game.AddOn = "Position: (" + pcritter.Position.X.ToString() + ", " +
-                pcritter.Position.Y.ToString() + ", " + pcritter.Position.Z.ToString() + ")";
+            pcritter.Game.AddOn = "Get funky fresh";
             if (up)
             {
                 pcritter.Sprite.setstate(State.Other, 160, 177, StateType.Repeat);

@@ -118,7 +118,7 @@ namespace ACFramework
                 if (!cGame3D.setListener) 
 				{
 					Player.Listener = new cListenerDance();
-					MessageBox.Show("Use the movement keys to \nincrease your score to 1000 with funky fresh moves");
+					MessageBox.Show("Hold the movement keys to \nincrease your score to 1000 with funky fresh moves");
 				}
 				cGame3D.setListener = true;
 				return true;
